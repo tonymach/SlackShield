@@ -8,6 +8,8 @@ import scheduleRoutes from './routes/schedules.js'
 import violationRoutes from './routes/violations.js'
 import templateRoutes from './routes/templates.js'
 import slackEventsRoutes from './routes/slack-events.js'
+import experimentRoutes from './routes/experiments.js'
+import emailRoutes from './routes/emails.js'
 import { startDNDScheduler } from './services/dndScheduler.js'
 import { authenticateToken } from './middleware/auth.js'
 import {
@@ -75,6 +77,8 @@ app.use('/api/workspaces', authenticateToken, workspaceRoutes)
 app.use('/api/schedules', authenticateToken, scheduleRoutes)
 app.use('/api/violations', authenticateToken, violationRoutes)
 app.use('/api/templates', authenticateToken, templateRoutes)
+app.use('/api/experiments', experimentRoutes) // Public endpoints for A/B testing
+app.use('/api/email', emailRoutes) // Email endpoints (some public, some auth)
 app.use('/slack', slackEventsRoutes) // Slack events don't use JWT auth
 
 // Error handling middleware (must be last)

@@ -1,0 +1,267 @@
+.experiments-dashboard {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.experiments-dashboard.loading,
+.experiments-dashboard.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  color: #1d1c1d;
+}
+
+.subtitle {
+  margin: 0;
+  color: #616061;
+  font-size: 1.125rem;
+}
+
+.experiment-selector {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+.experiment-selector label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1d1c1d;
+}
+
+.experiment-selector select {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: white;
+}
+
+.experiment-results {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.experiment-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.experiment-info h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1d1c1d;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.running {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge.completed {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-badge.draft {
+  background: #f5f5f5;
+  color: #616061;
+}
+
+.control-section,
+.treatments-section {
+  margin-bottom: 2rem;
+}
+
+.control-section h4,
+.treatments-section h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #1d1c1d;
+}
+
+.variant-card {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 2px solid #e0e0e0;
+}
+
+.variant-card.control {
+  background: #fff9e6;
+  border-color: #ecb22e;
+}
+
+.variants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.variant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.variant-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1d1c1d;
+}
+
+.significance-badge {
+  padding: 0.25rem 0.5rem;
+  background: #2eb67d;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.variant-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #616061;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1d1c1d;
+}
+
+.stat-value.positive {
+  color: #2eb67d;
+}
+
+.stat-value.negative {
+  color: #e01e5a;
+}
+
+.interpretation-guide {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f0f7ff;
+  border-radius: 8px;
+  border-left: 4px solid #1976d2;
+}
+
+.interpretation-guide h4 {
+  margin: 0 0 1rem 0;
+  color: #1976d2;
+}
+
+.interpretation-guide ul {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.interpretation-guide li {
+  margin-bottom: 0.5rem;
+  color: #1d1c1d;
+}
+
+.interpretation-guide .note {
+  margin: 1rem 0 0 0;
+  padding: 1rem;
+  background: white;
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  color: #616061;
+}
+
+.experiment-actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #f0f0f0;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: #611f69;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #4a154b;
+}
+
+.btn-danger {
+  background: #e01e5a;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #c01548;
+}
+
+@media (max-width: 768px) {
+  .experiments-dashboard {
+    padding: 1rem;
+  }
+
+  .variant-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .variants-grid {
+    grid-template-columns: 1fr;
+  }
+}
