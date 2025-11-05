@@ -10,7 +10,7 @@ import { decrypt } from '../utils/encryption.js'
  * @param {Object} schedule - Schedule object from database
  * @returns {boolean} True if within off-hours
  */
-function isWithinOffHours(currentTime, dayOfWeek, schedule, currentDate) {
+export function isWithinOffHours(currentTime, dayOfWeek, schedule, currentDate) {
   // Check if schedule is for current day
   if (schedule.day_of_week !== dayOfWeek) {
     return false
