@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Git Secrets Pre-Commit Hook
+# Prevents committing files with sensitive information
+
+echo "🔍 Scanning for secrets..."
+
+# Get list of staged files
+staged_files=$(git diff --cached --name-only)
+
+# Skip if no files staged
+if [ -z "$staged_files" ]; then
+  exit 0
+fi
+
+# Read patterns file
+patterns_file=".git-secrets-patterns"
+
+if [ ! -f "$patterns_file" ]; then
+  echo "⚠️  Warning: $patterns_file not found. Secrets scanning skipped."
+  exit 0
+fi
+
+# Check each staged file
+found_secrets=false
+
+while IFS= read -r pattern; do
+  # Skip empty lines and comments
+  [[ -z "$pattern" || "$pattern" =~ ^# ]] && continue
+
+  # Search staged files for pattern
+  matches=$(git diff --cached | grep -E "$pattern")
+
+  if [ ! -z "$matches" ]; then
+    found_secrets=true
+    echo "❌ FOUND POTENTIAL SECRET:"
+    echo "$matches"
+    echo ""
+  fi
+done < "$patterns_file"
+
+# Also check for .env files (should never be committed)
+if echo "$staged_files" | grep -qE "\.env$|\.env\.local$|\.env\.production$"; then
+  found_secrets=true
+  echo "❌ FOUND .env FILE:"
+  echo "$staged_files" | grep -E "\.env"
+  echo ""
+fi
+
+if [ "$found_secrets" = true ]; then
+  echo ""
+  echo "==================== SECRETS DETECTED ===================="
+  echo "❌ Commit blocked: Potential secrets or .env files found"
+  echo ""
+  echo "Please remove sensitive data before committing."
+  echo "If this is a false positive, you can:"
+  echo "  1. Update the patterns in .git-secrets-patterns"
+  echo "  2. Use: git commit --no-verify (NOT RECOMMENDED)"
+  echo "=========================================================="
+  exit 1
+fi
+
+echo "✅ No secrets detected. Proceeding with commit."
+exit 0

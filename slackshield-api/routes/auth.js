@@ -3,6 +3,8 @@ import { WebClient } from '@slack/web-api'
 import { query } from '../utils/db.js'
 import { encrypt } from '../utils/encryption.js'
 import { generateToken } from '../middleware/auth.js'
+import { authLimiter } from '../middleware/security.js'
+import { logAuth } from '../utils/auditLog.js'
 
 const router = express.Router()
 
@@ -24,7 +26,7 @@ router.get('/slack', (req, res) => {
  * Step 2: Handle callback from Slack
  * GET /api/auth/slack/callback?code=xxx
  */
-router.get('/slack/callback', async (req, res) => {
+router.get('/slack/callback', authLimiter, async (req, res) => {
   const { code, error } = req.query
 
   if (error) {
@@ -117,6 +119,20 @@ router.get('/slack/callback', async (req, res) => {
     // Generate JWT token
     const jwtToken = generateToken({ id: userId, email: userEmail })
 
+    // Audit log successful authentication
+    logAuth({
+      action: 'SLACK_AUTH_SUCCESS',
+      userId: userId,
+      workspaceId: existingWorkspace.rows[0]?.id,
+      success: true,
+      ip: req.ip,
+      userAgent: req.headers['user-agent'],
+      metadata: {
+        teamId: team.id,
+        teamName: team.name
+      }
+    })
+
     // Return token to frontend
     return res.json({
       success: true,
@@ -129,6 +145,16 @@ router.get('/slack/callback', async (req, res) => {
 
   } catch (error) {
     console.error('Slack OAuth callback error:', error)
+
+    // Audit log failed authentication
+    logAuth({
+      action: 'SLACK_AUTH_FAILED',
+      success: false,
+      error: error.message,
+      ip: req.ip,
+      userAgent: req.headers['user-agent']
+    })
+
     return res.status(500).json({
       error: 'Failed to complete Slack authentication',
       message: error.message
