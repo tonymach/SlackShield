@@ -1,0 +1,29 @@
+{
+  "name": "slackshield-api",
+  "version": "0.1.0",
+  "description": "SlackShield API - Slack boundary enforcement backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js"
+  },
+  "keywords": ["slack", "boundaries", "work-life-balance"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@slack/web-api": "^7.0.1",
+    "@slack/events-api": "^3.0.1",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3",
+    "node-cron": "^3.0.3",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

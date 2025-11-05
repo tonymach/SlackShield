@@ -1,0 +1,126 @@
+.violation-list {
+  width: 100%;
+}
+
+.violation-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.violation-filters button {
+  padding: 8px 16px;
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.violation-filters button:hover {
+  border-color: var(--primary-color);
+}
+
+.violation-filters button.filter-active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.violation-summary {
+  padding: 12px;
+  background: var(--background);
+  border-radius: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.violation-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.violation-group {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.violation-group summary {
+  padding: 16px;
+  cursor: pointer;
+  background: var(--background);
+  list-style: none;
+  user-select: none;
+}
+
+.violation-group summary::-webkit-details-marker {
+  display: none;
+}
+
+.violation-group summary::before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 8px;
+  transition: transform 0.2s;
+}
+
+.violation-group[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.violation-group summary:hover {
+  background: #f5f5f5;
+}
+
+.violator-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.violator-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.violation-count {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.violation-items {
+  padding: 16px;
+  background: white;
+}
+
+.violation-item {
+  padding: 12px;
+  border-left: 3px solid var(--danger-color);
+  background: #fff5f5;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.violation-item:last-child {
+  margin-bottom: 0;
+}
+
+.violation-time {
+  font-size: 14px;
+  font-family: monospace;
+  color: var(--text-primary);
+}
+
+.violation-channel {
+  font-size: 13px;
+  color: var(--text-secondary);
+}

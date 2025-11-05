@@ -1,0 +1,78 @@
+.template-editor {
+  width: 100%;
+}
+
+.template-preview {
+  margin-bottom: 16px;
+}
+
+.preview-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.preview-message {
+  padding: 16px;
+  background: var(--background);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.template-form textarea {
+  font-family: inherit;
+  resize: vertical;
+}
+
+.template-help {
+  margin-top: 12px;
+  padding: 12px;
+  background: #e8f5e9;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.template-help p {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.template-help ul {
+  margin-left: 20px;
+}
+
+.template-help li {
+  margin-bottom: 4px;
+  color: var(--text-secondary);
+}
+
+.template-variables {
+  margin: 16px 0;
+  padding: 12px;
+  background: #fff3cd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.template-variables p {
+  margin-bottom: 8px;
+}
+
+.template-variables ul {
+  list-style: none;
+  margin-left: 0;
+}
+
+.template-variables li {
+  margin-bottom: 4px;
+}
+
+.template-variables code {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 13px;
+}
